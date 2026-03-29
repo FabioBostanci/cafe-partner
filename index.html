@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Firmen-Datenbank Café</title>
+    <link rel="apple-touch-icon" href="LOGO-1.png">
     <style>
         /* MODERNES, Ü50-FREUNDLICHES DESIGN (Apple-Style) */
         :root {
@@ -114,23 +115,6 @@
         }
 
         h1 { font-size: 28px; font-weight: 800; }
-
-        /* RIESIGER PLUS-BUTTON */
-        .add-btn {
-            background-color: var(--accent-color);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 25px;
-            font-size: 30px;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
 
         /* GROSSE SUCHLEISTE */
         .search-container { margin-bottom: 20px; }
@@ -270,9 +254,11 @@
 
     <!-- HAUPTINHALT -->
     <div class="container" id="mainContent" style="display:none;">
+        <div style="text-align:center; margin-bottom:16px;">
+            <img src="LOGO-1.png" alt="Café Logo" style="height:80px;">
+        </div>
         <header>
             <h1>📋 Firmen</h1>
-            <button class="add-btn" title="Neuer Eintrag (via eintragen.py)">+</button>
         </header>
 
         <div class="search-container">
