@@ -1,7 +1,22 @@
 [
   {
-    "was": "Beispiel GmbH",
-    "wo": "https://beispiel.de",
-    "wer": "Max Mustermann"
+    "was": "Sahnemaschine",
+    "wo": "https://www.sanomat.com/de/",
+    "wer": ""
+  },
+  {
+    "was": "Kuchenvirtrine",
+    "wo": "https://www.hakemann.de/de/home",
+    "wer": ""
+  },
+  {
+    "was": "Herdplatte",
+    "wo": "https://www.induktion.de/produkte/public/Auftischgeraete/",
+    "wer": ""
+  },
+  {
+    "was": "Leuchtröhre",
+    "wo": "https://www.beleuchtungdirekt.de/ledvance-led-rohre-t5-performance-mains-ac-high-efficiency-7w-1000lm-840-kaltweiss-55cm-ersatz-fur-14w-4058075824430",
+    "wer": ""
   }
 ]

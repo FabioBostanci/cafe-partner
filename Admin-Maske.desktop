@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Café Admin-Maske
+Comment=Firmen-Datenbank verwalten
+Exec=python3 /media/fabio/ToshibaHDD2TB/Cafe-Wissensdatenbank/cafe-partner/admin_maske.py
+Icon=/media/fabio/ToshibaHDD2TB/Cafe-Wissensdatenbank/cafe-partner/LOGO-1.png
+Terminal=false
+StartupNotify=true
