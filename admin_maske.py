@@ -109,7 +109,7 @@ class AdminMaske:
         # ── Veröffentlichen ──
         tk.Button(
             self.root,
-            text="☁  Änderungen auf iPhone veröffentlichen",
+            text="☁  Änderungen veröffentlichen",
             command=self._veroeffentlichen,
             bg="#007aff",
             fg="white",
@@ -187,7 +187,7 @@ class AdminMaske:
 
         messagebox.showinfo(
             "Fertig!",
-            "Änderungen erfolgreich veröffentlicht.\nDas iPhone sieht die Daten sofort.",
+            "Änderungen erfolgreich veröffentlicht.",
         )
 
 
