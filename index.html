@@ -109,12 +109,40 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             padding-bottom: 10px;
             border-bottom: 1px solid #d1d1d6;
         }
 
         h1 { font-size: 28px; font-weight: 800; }
+
+        /* ── TAB-LEISTE ── */
+        .tab-bar {
+            display: flex;
+            background-color: var(--card-color);
+            border-radius: 12px;
+            padding: 4px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            font-size: 17px;
+            font-weight: 600;
+            border: none;
+            border-radius: 9px;
+            cursor: pointer;
+            background: transparent;
+            color: #8e8e93;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .tab-btn.active {
+            background-color: var(--accent-color);
+            color: white;
+        }
 
         /* GROSSE SUCHLEISTE */
         .search-container { margin-bottom: 20px; }
@@ -153,6 +181,35 @@
         }
 
         .chevron { color: #c7c7cc; font-size: 24px; font-weight: bold; }
+
+        /* WARTUNGS-LISTE UND KACHELN */
+        #wartungList { display: flex; flex-direction: column; gap: 15px; }
+
+        .wartung-card {
+            background-color: var(--card-color);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .wartung-datum {
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #8e8e93;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .wartung-objekt {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .wartung-massnahme {
+            font-size: 17px;
+            color: #3a3a3c;
+        }
 
         /* KEIN-ERGEBNIS */
         .empty-state {
@@ -258,14 +315,27 @@
             <img src="LOGO-1.png" alt="Café Logo" style="height:80px;">
         </div>
         <header>
-            <h1>📋 Firmen</h1>
+            <h1 id="headerTitle">📋 Firmen</h1>
         </header>
 
-        <div class="search-container">
-            <input type="search" id="searchBar" placeholder="🔍  Suchen..." oninput="filterList()">
+        <!-- TAB-LEISTE -->
+        <div class="tab-bar">
+            <button class="tab-btn active" onclick="switchTab('partner')">Partner</button>
+            <button class="tab-btn" onclick="switchTab('wartung')">Wartung</button>
         </div>
 
-        <div id="companyList"></div>
+        <!-- PARTNER-BEREICH -->
+        <div id="partnerBereich">
+            <div class="search-container">
+                <input type="search" id="searchBar" placeholder="🔍  Suchen..." oninput="filterList()">
+            </div>
+            <div id="companyList"></div>
+        </div>
+
+        <!-- WARTUNGS-BEREICH -->
+        <div id="wartungBereich" style="display:none;">
+            <div id="wartungList"></div>
+        </div>
     </div>
 
     <!-- DETAIL-MODAL -->
@@ -288,6 +358,7 @@
     <script>
         const PASSWORT = 'cafe123';
         let allEntries = [];
+        let wartungEntries = [];
 
         // ── LOGIN ──
         document.getElementById('passwordInput').addEventListener('keydown', function(e) {
@@ -314,15 +385,36 @@
             try {
                 const res = await fetch('daten.json?t=' + Date.now());
                 if (!res.ok) throw new Error('Datei nicht gefunden');
-                allEntries = await res.json();
+                const daten = await res.json();
+                allEntries = daten.partner || [];
+                wartungEntries = daten.wartung || [];
                 renderList(allEntries);
+                renderWartung();
             } catch (e) {
                 document.getElementById('companyList').innerHTML =
                     '<div class="empty-state">⚠️ Fehler beim Laden der Daten.<br>Bitte Seite neu laden.</div>';
             }
         }
 
-        // ── LISTE RENDERN ──
+        // ── TAB WECHSELN ──
+        function switchTab(tab) {
+            const btns = document.querySelectorAll('.tab-btn');
+            btns.forEach(b => b.classList.remove('active'));
+
+            if (tab === 'partner') {
+                btns[0].classList.add('active');
+                document.getElementById('partnerBereich').style.display = 'block';
+                document.getElementById('wartungBereich').style.display = 'none';
+                document.getElementById('headerTitle').textContent = '📋 Firmen';
+            } else {
+                btns[1].classList.add('active');
+                document.getElementById('partnerBereich').style.display = 'none';
+                document.getElementById('wartungBereich').style.display = 'block';
+                document.getElementById('headerTitle').textContent = '🔧 Wartung';
+            }
+        }
+
+        // ── PARTNER-LISTE RENDERN ──
         function renderList(entries) {
             const list = document.getElementById('companyList');
             if (entries.length === 0) {
@@ -333,6 +425,31 @@
                 <div class="company-card" onclick="openModal(${allEntries.indexOf(e)})">
                     <span class="company-what">${escHtml(e.was)}</span>
                     <span class="chevron">›</span>
+                </div>
+            `).join('');
+        }
+
+        // ── WARTUNGS-LISTE RENDERN ──
+        function renderWartung() {
+            const list = document.getElementById('wartungList');
+            if (wartungEntries.length === 0) {
+                list.innerHTML = '<div class="empty-state">Keine Wartungseinträge vorhanden.</div>';
+                return;
+            }
+            // Chronologisch sortiert (neueste zuerst)
+            const sorted = [...wartungEntries].sort((a, b) => {
+                const parse = d => {
+                    const parts = d.split('.');
+                    if (parts.length === 3) return new Date(parts[2], parts[1] - 1, parts[0]);
+                    return new Date(d);
+                };
+                return parse(b.datum) - parse(a.datum);
+            });
+            list.innerHTML = sorted.map(e => `
+                <div class="wartung-card">
+                    <div class="wartung-datum">${escHtml(e.datum)}</div>
+                    <div class="wartung-objekt">${escHtml(e.objekt)}</div>
+                    <div class="wartung-massnahme">${escHtml(e.massnahme)}</div>
                 </div>
             `).join('');
         }
