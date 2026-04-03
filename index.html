@@ -267,7 +267,7 @@
             <div class="info-value" id="modalWas"></div>
             <div class="info-label">Wo / Info</div>
             <div class="info-value" id="modalWo"></div>
-            <div class="info-label">Wer</div>
+            <div class="info-label">Spezifikation</div>
             <div class="info-value" id="modalWer"></div>
         </div>
     </div>
@@ -361,7 +361,7 @@
             }
             const filtered = allEntries.filter(e =>
                 e.was.toLowerCase().includes(q) ||
-                e.wer.toLowerCase().includes(q) ||
+                (e.spezifikation || '').toLowerCase().includes(q) ||
                 e.wo.toLowerCase().includes(q)
             );
             renderList(filtered);
@@ -381,7 +381,7 @@
                 woEl.textContent = e.wo;
             }
 
-            document.getElementById('modalWer').textContent = e.wer;
+            document.getElementById('modalWer').textContent = e.spezifikation || '';
             document.getElementById('detailModal').classList.add('active');
         }
 
