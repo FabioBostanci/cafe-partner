@@ -3,42 +3,47 @@
     {
       "was": "Sahnemaschine",
       "wo": "https://www.sanomat.com/de/",
-      "wer": ""
+      "spezifikation": "Modell \"Eurocream\""
     },
     {
       "was": "Kuchenvirtrine",
       "wo": "https://www.hakemann.de/de/home",
-      "wer": ""
+      "spezifikation": "WIHA Thekentechnik"
     },
     {
       "was": "Herdplatte",
       "wo": "https://www.induktion.de/produkte/public/Auftischgeraete/",
-      "wer": ""
+      "spezifikation": ""
     },
     {
       "was": "Tischbeine schwarz",
       "wo": "https://www.gastroclassics.com/p/ruegen-schwarz-4-beinig",
-      "wer": ""
+      "spezifikation": "Tischuntergestell Rügen 4 - beinig"
     },
     {
       "was": "Steckdosen",
       "wo": "https://www.elektro-wandelt.de/GIRA-492003-EZ-TL-Abd-SCHUKO-Steckd-System-55.html",
-      "wer": ""
+      "spezifikation": "System \"Gira 55\""
     },
     {
       "was": "Spotlampen WC",
       "wo": "https://www.amazon.de/PHILIPS-Reflektor-warmwei%C3%9Fem-energiesparende-Nutzlebensdauer/dp/B01KHILJ5O?th=1",
-      "wer": ""
+      "spezifikation": "Philips LED Classic - 4,6 Watt - 2700 K warmweißes Licht - GU10 Sockel"
     },
     {
       "was": "Leuchtröhre Kuchenvitrine lang",
       "wo": "https://www.beleuchtungdirekt.de/ledvance-led-rohre-t5-performance-mains-ac-high-efficiency-18w-2550lm-830-warmweiss-145cm-ersatz-fur-35w-4058075824232",
-      "wer": ""
+      "spezifikation": "Ledvance LED Röhre T5 Performance (Mains AC) High Efficiency 18W 2550lm - 830 Warmweiß | 145cm"
     },
     {
       "was": "Leuchtröhre Kuchenvitrine kurz",
       "wo": "https://www.beleuchtungdirekt.de/ledvance-led-rohre-t5-performance-mains-ac-high-efficiency-16w-2150lm-830-warmweiss-115cm-ersatz-fur-28w-4058075824294",
-      "wer": ""
+      "spezifikation": "Ledvance LED Röhre T5 Performance (Mains AC) High Efficiency 16W 2150lm - 830 Warmweiß | 115cm"
+    },
+    {
+      "was": "Gasfeder Eisvitrine",
+      "wo": "https://www.ap.cool/stabilus-477292-1300n-lift-o-mat-gasfeder/",
+      "spezifikation": "Stabilus 477292 1300N LIFT-O-MAT Gasfeder"
     }
   ],
   "wartung": [

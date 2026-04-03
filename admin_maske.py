@@ -94,7 +94,7 @@ class AdminMaske:
         )
         self.partner_frame_eingabe.pack(fill="x", padx=12, pady=(12, 6))
 
-        labels = [("Was:", "was"), ("Wo / Info:", "wo"), ("Wer:", "wer")]
+        labels = [("Was:", "was"), ("Wo / Info:", "wo"), ("spezifikation:", "spezifikation")]
         self.partner_felder: dict[str, tk.Entry] = {}
 
         for i, (label_text, key) in enumerate(labels):
@@ -256,7 +256,7 @@ class AdminMaske:
         self.partner_eintraege = daten.get("partner", [])
         self.partner_listbox.delete(0, tk.END)
         for e in self.partner_eintraege:
-            self.partner_listbox.insert(tk.END, f"  {e['was']}  –  {e['wer']}")
+            self.partner_listbox.insert(tk.END, f"  {e['was']}  –  {e['spezifikation']}")
 
     def _aktualisiere_wartung_liste(self):
         daten = lade_daten()
@@ -302,7 +302,7 @@ class AdminMaske:
     def _partner_speichern(self):
         was = self.partner_felder["was"].get().strip()
         wo  = self.partner_felder["wo"].get().strip()
-        wer = self.partner_felder["wer"].get().strip()
+        spezifikation = self.partner_felder["spezifikation"].get().strip()
 
         if not was or not wo:
             messagebox.showwarning("Fehlende Eingabe", "Bitte Was und Wo ausfüllen.")
@@ -310,9 +310,9 @@ class AdminMaske:
 
         daten = lade_daten()
         if self.partner_bearbeitungs_index is not None:
-            daten["partner"][self.partner_bearbeitungs_index] = {"was": was, "wo": wo, "wer": wer}
+            daten["partner"][self.partner_bearbeitungs_index] = {"was": was, "wo": wo, "spezifikation": spezifikation}
         else:
-            daten["partner"].append({"was": was, "wo": wo, "wer": wer})
+            daten["partner"].append({"was": was, "wo": wo, "spezifikation": spezifikation})
         speichere_daten(daten)
 
         self._partner_abbrechen()
