@@ -16,11 +16,6 @@
       "wer": ""
     },
     {
-      "was": "Leuchtröhre",
-      "wo": "https://www.beleuchtungdirekt.de/ledvance-led-rohre-t5-performance-mains-ac-high-efficiency-7w-1000lm-840-kaltweiss-55cm-ersatz-fur-14w-4058075824430",
-      "wer": ""
-    },
-    {
       "was": "Tischbeine schwarz",
       "wo": "https://www.gastroclassics.com/p/ruegen-schwarz-4-beinig",
       "wer": ""
@@ -34,7 +29,28 @@
       "was": "Spotlampen WC",
       "wo": "https://www.amazon.de/PHILIPS-Reflektor-warmwei%C3%9Fem-energiesparende-Nutzlebensdauer/dp/B01KHILJ5O?th=1",
       "wer": ""
+    },
+    {
+      "was": "Leuchtröhre Kuchenvitrine lang",
+      "wo": "https://www.beleuchtungdirekt.de/ledvance-led-rohre-t5-performance-mains-ac-high-efficiency-18w-2550lm-830-warmweiss-145cm-ersatz-fur-35w-4058075824232",
+      "wer": ""
+    },
+    {
+      "was": "Leuchtröhre Kuchenvitrine kurz",
+      "wo": "https://www.beleuchtungdirekt.de/ledvance-led-rohre-t5-performance-mains-ac-high-efficiency-16w-2150lm-830-warmweiss-115cm-ersatz-fur-28w-4058075824294",
+      "wer": ""
     }
   ],
-  "wartung": []
+  "wartung": [
+    {
+      "datum": "25.03.26",
+      "objekt": "Sahnemaschine Neu",
+      "massnahme": "Ventilkörper, O-Ringe und Magnetspule gewechselt"
+    },
+    {
+      "datum": "26.03.26",
+      "objekt": "Sahnemaschine Alt",
+      "massnahme": "O-Ringe gewechselt, vollständige Reinigung durchgeführt"
+    }
+  ]
 }
